@@ -52,6 +52,15 @@ if (GS_VERSION === undefined) {
 }
 
 /// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+/// RUN DEV ///////////////////////////////////////////////////////////////////
+/// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function RunDevServer() {
+  console.log(PR, `Starting ${PR} Development Server...`);
+  console.log(PR, `running branch ${m_branch_info} version ${GS_VERSION}`);
+}
+
+/// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 /// COMMAND DISPATCHER ////////////////////////////////////////////////////////
 /// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 const argv = MINIMIST(process.argv.slice(1));
@@ -67,13 +76,4 @@ switch (cmd) {
     break;
   default:
     console.log('unknown command', cmd);
-}
-
-/// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-/// RUN DEV ///////////////////////////////////////////////////////////////////
-/// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function RunDevServer() {
-  console.log(PR, `Starting ${PR} Development Server...`);
-  console.log(PR, `running branch ${m_branch_info} version ${GS_VERSION}`);
 }
