@@ -1,10 +1,6 @@
 {
   "name": "@ursanode/ursys",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:daveseah/ursanode.git"
-  },
   "version": "0.0.0",
   "description": "ursanode system",
   "author": "Dave 'Sri' Seah <david@davidseah.com>",
