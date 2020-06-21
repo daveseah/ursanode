@@ -1,0 +1,15 @@
+{
+  "name": "@ursanode/ursys",
+  "private": true,
+  "version": "0.0.0",
+  "description": "ursanode system",
+  "author": "Dave 'Sri' Seah <david@davidseah.com>",
+  "license": "MIT",
+  "main": "lib/ursys.js",
+  "directories": {},
+  "files": [],
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "scripts": {}
+}
