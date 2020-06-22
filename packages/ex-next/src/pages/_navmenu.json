@@ -1,6 +1,6 @@
 {
-  "NAVMENU": [
-    { "label": "Wireframe", "href": "/" },
-    { "label": "Notes", "href": "/notes" }
-  ]
+  "SITE": {
+    "title": "NextJS Page Title"
+  },
+  "NAVMENU": [{ "label": "Example", "href": "/" }]
 }

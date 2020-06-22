@@ -9,8 +9,9 @@
     "bootstrap": "lerna clean -y && lerna bootstrap --hoist",
     "audit": "lerna bootstrap && lerna-audit",
     "build": "lerna run build",
-    "app": "lerna run dev:app",
-    "start": "npm run build && multiview [npm run app]"
+    "start": "npm run build && multiview [npm run app]",
+    "ursys": "#ERR 'ursys is not runnable from lerna root'",
+    "app": "lerna run dev:app --stream --no-prefix"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.34.0",

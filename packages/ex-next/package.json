@@ -7,7 +7,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "app": "nodemon ./server/_start.js",
+    "local": "npm run dev:app",
+    "dev:app": "nodemon ./server/_start.js",
     "build": "next build",
     "start": "node ./server/_start",
     "storybook": "start-storybook -p 6006"

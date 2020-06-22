@@ -26,7 +26,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { useURSubscribe } from '../hooks/use-ursys';
 ///
 import theme from '../modules/style/theme';
+import { SITE } from './_navmenu.json';
 // simulation components
+import APPSTATE from '../modules/appstate';
+import SIM from '../modules/sim/_sim_system';
 
 /// DEBUG UTILS ///////////////////////////////////////////////////////////////
 /// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -56,7 +59,7 @@ export default function MyApp(props) {
     }
     // URSYS start
     // 1. Boot URSYS lifecycle independ nt of React
-    if (UR.URSYS_Initialize([])) {
+    if (UR.URSYS_Initialize([SIM, APPSTATE])) {
       UR.SystemBoot({
         autoRun: true,
         netProps
@@ -87,7 +90,7 @@ export default function MyApp(props) {
   return (
     <StylesProvider jss={jss}>
       <Head>
-        <title>URSANODE</title>
+        <title>{SITE.title}</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -96,7 +99,7 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Component {...pageProps} />
+        <Component {...pageProps} store={APPSTATE} />
       </ThemeProvider>
     </StylesProvider>
   );

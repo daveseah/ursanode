@@ -1,15 +1,10 @@
 /*///////////////////////////////// ABOUT \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\
 
-  MODELER MAIN PAGE
+  EXAMPLE MAIN PAGE
 
 \*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ * /////////////////////////////////////*/
 
 import React from 'react';
-// left-side tabbed views
-// right-side documentation reference
-import DocSimObjects from '../components/DocSimObjects';
-import DocSimControls from '../components/DocSimControls';
-import DocSystem from '../components/DocSystem';
 // ursys components
 import URSiteNav from '../page-blocks/URSiteNav';
 import URTabbedView from '../page-blocks/URTabbedView';
@@ -25,7 +20,9 @@ function Page() {
       <URSiteNav />
       <Row>
         <Cell>
-          <URTabbedView />
+          <URTabbedView>
+            <div label="Welcome" />
+          </URTabbedView>
         </Cell>
         <CellFixed
           style={{
@@ -35,9 +32,7 @@ function Page() {
           }}
         >
           <URTabbedView>
-            <DocSimObjects label="Objects" />
-            <DocSimControls label="Controls" />
-            <DocSystem label="Modules" />
+            <div label="Notes" />
           </URTabbedView>
         </CellFixed>
       </Row>
