@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Nuts and Bolts HTML+CSS+JS Template</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body id="home">
+    <h1>Example: A Simple File-based Website with Javascript and CSS</h1>
+
+    <p>
+      This example is a minimal website with an HTML that loads CSS, and
+      Javascript from files.Subsequent examples will add features based on this
+      starting point.
+    </p>
+    <h2>Notable Features</h2>
+    <p>
+      This example can work just by double-clicking or dragging the
+      <code>index.html</code> file into a web browser, or by putting it up on a
+      web server. This is fine for very simple sites that do not require any
+      external resources to be loaded or accessed, as browser security settings
+      prevent it as a safety policy.
+    </p>
+    <ul>
+      <li>The entry point is this file, <code>index.html</code></li>
+      <li>
+        Loads styles from <code>css/style.css</code> that does a
+        <a href="https://necolas.github.io/normalize.css/" target="_blank"
+          >css normalize</a
+        >
+      </li>
+      <li>
+        Loads javascript code from <code>js/main.js</code> at the end of the
+        <code>&lt;body&gt;</code>
+      </li>
+    </ul>
+
+    <h2>Program Output</h2>
+    <p>
+      The gray section below is a <code>&lt;div&gt;</code> that is written-to by
+      Javascript code defined in <code>js/main.js</code>.
+    </p>
+    <div class="container">
+      <div id="codeoutput"></div>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

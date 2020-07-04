@@ -7,8 +7,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "local": "npm run dev:app",
-    "dev:app": "nodemon ./server/_start.js",
+    "local": "npm run dev:ex-next",
+    "dev:ex-next": "nodemon ./server/_start.js",
+    "..ursys": "cd ../ursys && npm run local",
     "build": "next build",
     "start": "node ./server/_start",
     "storybook": "start-storybook -p 6006"

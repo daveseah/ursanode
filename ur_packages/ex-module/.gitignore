@@ -1,0 +1,9 @@
+# additional ignore
+
+# Parcel working directories
+.cache
+
+# Parcel compiled output
+/dist
+/tmp
+

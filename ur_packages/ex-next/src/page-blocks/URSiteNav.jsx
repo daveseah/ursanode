@@ -101,7 +101,7 @@ function URSiteNav() {
       <Grid container justify="space-between" className={classes.container}>
         <Grid item>
           <Typography variant="h6" className={classes.title}>
-            MODELER
+            {CONFIG.SITE.title}
           </Typography>
         </Grid>
         <Grid item>

@@ -1,4 +1,37 @@
-# Setting up Visual Studio Code
+# Using Visual Studio Code with URSANODE
+
+I have my Visual Studio Code (VSCode) environment setup to provide the following services:
+
+* Typescript and React syntax support
+* Live code linting with ESLint
+* Reformat on Save using Prettier
+* AirBNB style rules
+* Code templates for my module styles (snippets)
+* ESLint rule overrides that I find annoying
+
+If you don't want to use my highly-opinionated settings, you'll have to edit the following files to disable these features or substitute your own:
+
+* `.vscode/settings.json` 
+* `.editorconfig` 
+* `.eslintrc.js`
+
+If you *DO* want to use them, follow these instructions!
+
+1. [Download and install VSCode](https://code.visualstudio.com/download).
+
+2. Now open the `ursanode.code-workspace` project file at the root level of the `ursanode` directory. This configures the working environment to match mine through the `.vscode/settings.json` file.
+
+3. Install the suggested VSCODE extensions which should pop-up in the editor. These are also marked in VSCode's EXTENSIONS tab on the left sidebar, or you can see the list in `.vscode/extensions.json`.  
+
+---
+
+# Technical Information
+
+Setting up VSCode's toolchain requires an understanding of Javascript's ad-hoc best tools and practices. Many of the most popular tools use a "middleware/plugin" pattern that is incompletely documented, and the tool chains are quite fragile, breaking frequently when one key package is updated. Fortunately, most of it is open source so you can look at the actual code to determine what is going on. 
+
+I'm documenting my understanding of how it works here so I don't forget it. 
+
+## Theory of Operation
 
 There are two separate development toolchains. One is for  **Live Linting** in Visual Studio Code, and the other is for building the webpack bundle for running in the server. 
 

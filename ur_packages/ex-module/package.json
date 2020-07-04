@@ -1,0 +1,29 @@
+{
+  "name": "ursanode-ex-module",
+  "version": "0.0.0",
+  "description": "collection of useful code examples",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "parcel": "^1.12.3"
+  },
+  "babel": {
+    "plugins": []
+  },
+  "scripts": {
+    "clean": "rm -fr ./dist",
+    "local": "npm run dev:ex-module",
+    "dev:ex-module": "npm run clean && npx parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daveseah/good-code-examples.git"
+  },
+  "author": "Dave.Sri Seah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daveseah/good-code-examples/issues"
+  },
+  "homepage": "https://github.com/daveseah/good-code-examples#readme"
+}
