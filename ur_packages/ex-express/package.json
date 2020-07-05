@@ -1,0 +1,16 @@
+{
+  "name": "@ursanode/ex-express",
+  "version": "0.0.0",
+  "description": "Simple ExpressJS example",
+  "author": "Dave 'Sri' Seah <david@davidseah.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {},
+  "main": "server.js",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@ursanode/ex-html-js",
+  "version": "0.0.0",
+  "description": "HTML+JS example",
+  "author": "Dave 'Sri' Seah <david@davidseah.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "server": "node server.js"
+  },
+  "dependencies": {
+    "@ursanode/ex-express": "^0.0.0"
+  }
+}
