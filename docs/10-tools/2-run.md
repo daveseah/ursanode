@@ -4,30 +4,41 @@
 
 ## 1. Running URSANODE Demos
 
-URSANOODE is a monorepo, which is a collection of multiple code examples in a single Git repository. Before you can run any example code, you need to initialize the repo's Javascript dependencies. I've provided several scripts to make this easier.
+URSANODE is a monorepo, which is a collection of multiple code examples in a single Git repository. This monorepo is managed with `lerna`, and uses several `lerna` commands as part of the npm scripts defined in `package.json`. 
 
-First initialize the repo with the **bootstrap** script:
-```
-cd ~/dev/ursanode
-npm run bootstrap
-``` 
-Then you can run whatever demo might exist for the overall system by using the **start** script:
-```
-npm start
-```
-Use `CTRL-C` to stop system.
+#### Initializing the Repo
 
-For a complete list of scripts, look in `ursanode/package.json` under the `scripts` property.
+Several example packages depend on other packages in the repo. You will need to initialize the monorepo's Javascript dependencies for any examples to work using the provided **bootstrap** script as follows:
+```
+cd ~/dev/ursanode   # note: substitute with the location of your clone of ursanode
+npm run bootstrap   # run the 'bootstrap' script defined in ~/dev/ursanode/package.json
+```
+
+#### Running the Built-In Demos
+
+After you have initialized, you can run whatever demos might exist with the provided **start** script:
+```
+npm start           # run the 'start' script defined in ~/dev/ursanode/package.json
+```
+Use `CTRL-C` to stop the system.
+
+TIP: For a complete list of scripts, look in `ursanode/package.json` under the `scripts` property.
 
 ## 2. Update URSANODE to latest code
 
-To make sure your version of URSANODE is up to date, you will have to pull the latest code changes from our source code repository. Again from the command line in the `ursanode` directory:
+When you want to update your local copy of the URSANODE repo, you will have to pull the latest code changes from our source code repository using Git. 
 ```
-git pull
-npm run bootstrap
+cd ~/dev/ursanode   # note: substitute with the location of your clone of ursanode
+git pull            # grabs the latest from the upstream repository
+npm run bootstrap   # re-initialize all the monorepo packages
+
 ```
-## TIPS
+## 3. Undoing Changes
 
-* If you have accidentally edited any files, use the command `git reset --hard HEAD` to restore the current branch to the way it was. You will lose all your changes.
+If you have accidentally edited any files, use the command `git reset --hard HEAD` to restore the current branch to the way it was. You will lose all your changes (but that is what you wanted).
 
+## A. References
 
+* NPM Cheat Sheet
+* Lerna Cheat Sheet
+* Git Cheat Sheet
