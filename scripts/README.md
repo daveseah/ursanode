@@ -25,3 +25,7 @@ At the end of the detection phase, both OUT and CLI buffers are echoed to the st
 4. NVM already installed? - Node Version Manager is our preferred tool for installing NodeJS
 5. Lerna installed globally? - Lerna is required for working with our monorepo
 
+## Example Output
+
+[![asciicast](https://asciinema.org/a/bsNtYXRjx15M7dp8wmsnwywlY.svg?autoplay=1)](https://asciinema.org/a/bsNtYXRjx15M7dp8wmsnwywlY)
+(Recorded with asciinema)
