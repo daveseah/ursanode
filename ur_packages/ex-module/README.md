@@ -12,14 +12,14 @@ The build process is run from the command line with NodeJS and Git as prerequisi
 
 Once you have the dev prereqs installed, `cd` to the `ursanode/ur_packages` directory and start the build process:
 ```
-cd ~/dev/ursanode/
+cd ~/your-path-to/ursanode/
 npm run bootstrap
 npm run ex-module
 ```
 
 The [Parcel][parceljs] build tool will run and serve the HTML file in your default web browser. Type **ctrl-c** to quit the webserver.
 
-#### Historical Notes
+#### Side Notes
 
 - For visual consistency across browsers, the base CSS is ["normalized"][normalized] by importing `normalize.css` via the main stylesheet `style.css`. This practice was introduced in 2012.
 

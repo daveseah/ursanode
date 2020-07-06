@@ -1,7 +1,8 @@
 # NextJS Example
 
-Description
+This is an example implementation of a [NextJS 9]() server loading a web app, complete with build system.
 
-## Building and Running
-
-Steps
+* Loads the `@ursanode/ursys` library to establish a messaging network between different instances of the web app.
+* Uses [React]() with [Material UI]()
+* Includes [Storybook]() integration
+* Is [Typescript]()-ready
