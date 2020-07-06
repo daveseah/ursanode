@@ -27,5 +27,5 @@ At the end of the detection phase, both OUT and CLI buffers are echoed to the st
 
 ## Example Output
 
-[![asciicast](https://asciinema.org/a/bsNtYXRjx15M7dp8wmsnwywlY.svg?autoplay=1)](https://asciinema.org/a/bsNtYXRjx15M7dp8wmsnwywlY)
+[![asciicast](https://asciinema.org/a/bsNtYXRjx15M7dp8wmsnwywlY.svg?autoplay=1)](https://asciinema.org/a/bsNtYXRjx15M7dp8wmsnwywlY?autoplay=1)
 (Recorded with asciinema)
