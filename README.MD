@@ -14,7 +14,7 @@ The Javascript universe has come a long way since 2010. In recent years, it star
 
 For all that power, the actual developer experience can be daunting to set up! URSANODE collects build system configurations and software patterns to make this easier, particularly when setting up projects from scratch. The working goal is for URSANODE to serve as both as a useful reference and as a way to collaborate with others.
 
-I've been working with interactive computer graphics since the 1980s, and the variety of that experience is reflected in my code formatting+lettercasing conventions. They differ from standard Javascript, and are [documented here](docs/00-info/module-structure.md) with an example.
+I've been working with interactive computer graphics since the 1980s, and the variety of that experience is reflected in my code formatting+lettercasing conventions. They differ from standard Javascript, and are [documented here](docs/00-info/module-style.md) with an example.
 
 
 
