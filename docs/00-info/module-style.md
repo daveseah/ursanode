@@ -11,7 +11,7 @@ which is located the repo's top-level: `.vscode/module-code-snippets`.
 /*///////////////////////////////// ABOUT \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*\
 
   D.Sri's Module Style
-  Designed to be more like C# in its lettercasing conventions
+  Somewhat like C# in its lettercasing conventions
 
 \*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ * /////////////////////////////////////*/
 
@@ -47,6 +47,7 @@ function m_Method() {
 /// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 /** jsdoc comment
  *  indent
+ */
 class MyClass {
   /* for declaring classes, one per file */
   /* remove if you're making a module (see below) */
@@ -82,10 +83,10 @@ function PublicB() {}
 
 /// INITIALIZATION ////////////////////////////////////////////////////////////
 /// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-/// any code that runs when module is loaded
+/// wrap init code in an "immediately-invoked function expression" (IIFFE)
+/// though this isn't strictly necessary in a module declaration
 (function(){
- /* use immediately-invoked function express (IIFE) for scope safety */
- /* though you probably don't need to */
+ /* your code */
 })();
 
 /// EXPORTS ///////////////////////////////////////////////////////////////////
@@ -95,3 +96,7 @@ function PublicB() {}
 /// cjs: module.exports = MODULEorCLASS;
 ///      module.exports = { A, B };
 ```
+
+## NOTES
+
+**Choosing type of module import/export** If you are writing for NodeJS, use the CommonJS ([cjs](http://www.commonjs.org/)) syntax. For browser-side code, using ECMAScript6 ([es6](https://en.wikipedia.org/wiki/ECMAScript#6th_Edition_%E2%80%93_ECMAScript_2015)) syntax will generally work with the right tooling (this codebase does).
