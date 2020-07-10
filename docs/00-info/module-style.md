@@ -83,10 +83,9 @@ function PublicB() {}
 
 /// INITIALIZATION ////////////////////////////////////////////////////////////
 /// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-/// wrap init code in an "immediately-invoked function expression" (IIFFE)
-/// though this isn't strictly necessary in a module declaration
+/// wrap code in an "immediately-invoked function expression" wrapper (IIFE)
 (function(){
- /* your code */
+  /* your code to run on module load, once */
 })();
 
 /// EXPORTS ///////////////////////////////////////////////////////////////////
@@ -99,4 +98,6 @@ function PublicB() {}
 
 ## NOTES
 
-**Choosing type of module import/export** If you are writing for NodeJS, use the CommonJS ([cjs](http://www.commonjs.org/)) syntax. For browser-side code, using ECMAScript6 ([es6](https://en.wikipedia.org/wiki/ECMAScript#6th_Edition_%E2%80%93_ECMAScript_2015)) syntax will generally work with the right tooling (this codebase does).
+**Choosing type of module import/export**: If you are writing for NodeJS, use the CommonJS ([cjs](http://www.commonjs.org/)) syntax. For browser-side code, using ECMAScript6 ([es6](https://en.wikipedia.org/wiki/ECMAScript#6th_Edition_%E2%80%93_ECMAScript_2015)) syntax will generally work with the right tooling (this codebase does).
+
+**Why IIFE for module init**: This odd structure is used as a workaround for early Javascript's weak variable scoping. The `(function(){ ... })()` creates a function body and immediately executes it, and ensures that any `var` use inside of it does not pollute the global namespace. Today, using the newer variable declaration syntax `let` and `const` resolve that issue. 
