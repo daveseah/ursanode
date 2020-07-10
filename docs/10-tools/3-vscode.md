@@ -4,10 +4,10 @@ I have my Visual Studio Code (VSCode) environment setup to provide the following
 
 * Typescript and React syntax support
 * Live code linting with ESLint
+* Applying the AirBNB ESLint rule set
+* Relaxing ESLint rules that I find annoying
 * Reformat on Save using Prettier
-* AirBNB style rules
 * Code templates for my module styles (snippets)
-* ESLint rule overrides that I find annoying
 
 If you don't want to use my highly-opinionated settings, you'll have to edit the following files to disable these features or substitute your own:
 
@@ -31,20 +31,22 @@ Setting up VSCode's toolchain requires an understanding of Javascript's ad-hoc b
 
 I'm documenting my understanding of how it works here so I don't forget it. 
 
-## Theory of Operation
+## How it fits together
 
-There are two separate development toolchains. One is for  **Live Linting** in Visual Studio Code, and the other is for building the webpack bundle for running in the server. 
+The surprising truth is that there are *TWO* separate development toolchains in use. Visual Studio uses one toolchain to do **live code linting** through installed **extensions**. The actual **compilation** work is done by a different toolchain and is controlled through a **npm build script** usually defined in `package.json`. 
 
-When you clone the project, you automatically get several configuration files that will be used by the following VSCode extensions:
+In most cases, the two toolchains share the same configuration files without modification, but sometimes a settings override must be placed inside a Visual Studio Code setting. 
 
-* `.nvmrc` - specific the version of node as managed by **Node Version Manager**. We are building on Node v12.19.0.
-* `.editorconfig` - Specify default tab and spacing rules through **EditorConfig** (ext `editorconfig.editorconfig`)
-* `.eslintrc.js` - Specify linting toolchain through **TypeScript** parser and expected plugins. This config is used by the **ESLint** extension (ext `dbaeumer.vscode-eslint`).
+When you clone the project, you automatically get everything that works together. Here's what's included:
+
+* `.editorconfig` - Specify default tab and spacing rules through **EditorConfig** extension (ext `editorconfig.editorconfig`)
+* `.nvmrc` - specific the version of node as managed by **Node Version Manager**. The contents of the file is read by the `nvm use` command.
+* `.eslintrc.js` - Specify linting toolchain through **TypeScript** parser and expected plugins. This config is used by the **ESLint** extension (ext `dbaeumer.vscode-eslint`) and also by the build tool chain. 
 * `prettierrc.js` - Specifiy automatic code formatting through the **Prettier** extension (ext `esbenp.prettier-vscode`)
 * `tsconfig.json` - Specify critical **Typescript configuration** for making the tricky Typescript linting work with the ESLint extension. It 
 * `.vscode/settings.json` - Specify editor defaults not handled by `.editorconfig`, *AND* critical **ESLint extension settings** to make it work with the editor: `eslint.validate` and `eslint.workingDirectories`.
 
-The listed extensions rely on the following packages. You shouldn't have to reinstall these yourself as they are part of the root directory's `package.json` already, but if you are building your own project from scratch it's good to know: 
+The listed extensions rely on the following packages. You shouldn't have to reinstall these yourself as they are part of the root directory's `package.json` already, but I provide them for reference. 
 ```
 npm i -D eslint@^6.8.0 typescript@^3.8.3 prettier@^1.19.1
 npm i -D @typescript-eslint/eslint-plugin@^2.24.0 @typescript-eslint/parser@^2.24.0
@@ -52,7 +54,7 @@ npm i -D eslint-config-airbnb-typescript@^7.2.0 eslint-config-prettier@^6.10.0
 npm i -D eslint-import-resolver-typescript@^2.0.0 eslint-plugin-import@^2.20.1
 npm i -D eslint-plugin-jsx-a11y@^6.2.3 eslint-plugin-react@^7.19.0 eslint-plugin-react-hooks@^2.5.1
 ```
-Note 1: the ESLint, Typescript, Prettier, and AirBnb linting rules+plugins are all updated by different groups. The package versions thus should be considered as a set. If you change them, new conflicts in the rules may arise. I would not use a `npm i -D` without specifying the exact versions that you know work.
+Note 1: The package versions are important for compatibility with each other, and the entire block should be considered as a set. The ESLint, Typescript, Prettier, and AirBnb linting rules+plugins are all updated by different organizations so compatibility requires *CAREFUL* updating. 
 
 Note 2: the **order of application of rules** in the `plugins` and `extends` fields in `.eslintrc.js` is critically important. In general, the `prettier`-related plugins/rules always come last and `typescript`-related plugins/rules come first. In the very last `rules` section, this is where we (1) add our own overrides and (2) remove any whitespace formatting-related rules and uncaught rule conflicts. For example, when you see TWO versions of `no-undeclared-vars` errors, I just remove the `eslint`  one.
 
@@ -121,7 +123,7 @@ There are various shortcut rules that make figuring out your ESLint configuratio
 
 A plugin is an npm package that exports rules and configurations. The syntax for an entry in `extends` is:
 
->  ` [plugin:[eslint-plugin-]package_name/configuration_name`
+>  `[plugin:[eslint-plugin-]package_name/configuration_name`
 
 The internal eslint rules provide configurations that use `:configuration_name` instead of `/` characters. For example:
 
