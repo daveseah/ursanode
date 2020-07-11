@@ -1,4 +1,4 @@
-# About Monorepos
+# What is a Monorepo and Why Use It?
 
 The URSANODE project files are organized as a **monorepo**, which is simply a single Git repository that hosts more than one project. Ordinarily a Git repo contains a single project, but this approach becomes cumbersome when you have multiple projects that are closely intertwined. With a monorepo, you can make changes across multiple projects and update them as an entire set in a single Git commit.
 
@@ -6,7 +6,7 @@ So how do monorepos work with Node Package Manager? The essential idea is that y
 
 In practice, though, there are tools to synchronize **versionining** and **package updating** of each individual project as one. The two popular ones are **Lerna** and **Yarn**, and all they do is update each project directory for you. 
 
-In URSANODE, the tool we are using is Lernab with NPM because it is very slightly more mature, and we are also using `npm` instead of `yarn` as our package manager. 
+In URSANODE, the tool we are using is Lerna with NPM because at the time of this writing it is very slightly more mature, and we are already using `npm` (not `yarn`) as our package manager. 
 
 ## Minimum Lerna Config
 
