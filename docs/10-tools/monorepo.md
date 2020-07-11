@@ -144,7 +144,7 @@ At this point, you should **test** that all your projects are building successfu
 
 
 
-## Reinstalling project dependencies with `lerna bootstrap`
+## Install project dependencies with `lerna bootstrap`
 
 The **lerna bootstrap** command is similar to using `npm ci` which uses `package-lock.json` to exactly restore the package dependency tree for first-time initialization, except it works on ALL the projects in your monorepo at once. Bootstrapping also takes care of linking **dependencies between projects** in the monorepo; without it, you may see "module not found" errors pop up in your development environment. 
 
@@ -314,7 +314,7 @@ VERSION: to apply version updates you need to do this from your **local** machin
 
 
 
-## Can I open a subproject as a Visual Studio Code workspace root, or do I have to always have open the monorepo root?
+## Can I open packages/mypackage as a Visual Studio Code workspace root, or do I have to open the monorepo root?
 
 Yes, you can just open the subproject root BUT you have to duplicate some configuration files: 
 
@@ -327,7 +327,7 @@ In URSANODE, I sometimes define the script `npm run local` as an alias for runni
 
 
 
-### When I add a new package to the monorepo, the version is out of synch!
+## When I add a new package to the monorepo, the version is out of synch!
 
 I think this occurs when you make a new package by duplicating an existing one, followed by using `lerna bootstrap --hoist`. You might be able to avoid it if you use `lerna create` for creating packages. The internet is not clear on what actually is happening behind the scenes.
 
