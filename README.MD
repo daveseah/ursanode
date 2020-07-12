@@ -2,6 +2,12 @@
 
 URSANODE is a collection of working code modules, targeting Javascript interactive development using HTML5 and NodeJS. It is probably most useful for programmers with an "intermediate" level of expertise, and for programmers who are exploring software design patterns. While URSANODE is my "learning code base", I think it's solid enough to be helpful to people with prior development experience.
 
+URSANODE is in pre-pre-prerelease, but there are some useful examples:
+
+* a configured vscode build system: incorporating eslint, typescript, prettier, airbnb, editorconfig
+* ex-next: A NextJS 9.x project incorporating React and MaterialUI for implementing client-side interactive modules through URSYS
+* URSYS: A message based remote calling system for synchronizing web apps served from the same server across a network
+
 ## Quick Start
 
 You'll need to download the repo to your working development directory, then make sure that you have the necessary command line build tools installed. I have [Macintosh setup instructions](docs/10-tools/1-install.md) available; Linux and Windows 10/WSL should work similarly but I have not yet confirmed they work.
