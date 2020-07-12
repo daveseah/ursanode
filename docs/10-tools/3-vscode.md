@@ -9,7 +9,7 @@ I have my Visual Studio Code (VSCode) environment setup to provide the following
 * Reformat on Save using Prettier
 * Code templates for my module styles (snippets)
 
-If you don't want to use my highly-opinionated settings, you'll have to edit the following files to disable these features or substitute your own:
+If you don't want to use my opinionated settings, you'll have to edit the following files to disable these features or substitute your own:
 
 * `.vscode/settings.json` 
 * `.editorconfig` 
@@ -119,35 +119,75 @@ module.exports = {
 
 ### .eslintrc magic naming conventions
 
-There are various shortcut rules that make figuring out your ESLint configuration needlessly opaque. ESLint supports external modules with sets of rules that can be loaded as npm modules. They can be packages of rules, configurations (sets of rules), or plugins. 
+ESLint capabilities are extended through external modules, loaded through npm, that define either "rules", "configurations" (sets of rules), or "plugins". These npm modules tend to use similar names but different configuration semantics, and you can omit parts of the filename. It's not just you; ESLint configuration is opaque to casual inspection. I'll try to explain how I think it works below. 
 
-A plugin is an npm package that exports rules and configurations. The syntax for an entry in `extends` is:
+ESLint is essentially checks your code against a set of **rules** in a process called "linting". A lot of rules are already built-into the ESLint core engine, but users frequently don't want all of them so you can override them. For convenience, you can collect a set of rules together as a **configuration**. To add rules that ESLint doesn't support natively, a **plugin** is written to add both code and rules to implement whatever extended syntax is desired. 
+
+ESLint's configuration is stored as JSON in a file called `.eslintrc`. Alternatively, you can export a Javascript object from `.eslintrc.js`. I use the latter so I can add comments to my configuration (since comments are not part of the JSON standard).
+
+#### ADD A PLUGIN
+
+To add an ESLint plugin to the chain, you add an entry to the config object's `plugins` entry, which is an array of npm modules. You can put the full package name here, but many tutorials use the "shortcut" versions of names. See this example of a project's `plugins` entry with their corresponding npm package defined in `package.json` under `devDependencies`:
+``` json
+  plugins: [
+    'react',              // refers to eslint-plugin-react
+    '@typescript-eslint', // refers to @typescript-eslint/eslint-plugin 
+    'import'              // refers to eslint-plugin-import
+  ],
+```
+The general rule is that in the plugins field, you can just drop the `eslint-plugin` portion of the name.
+
+In addition to rules and configuration, ESLint plugins has access to the entire linting lifecycle, which means they can do more than just define rules and configurations. To dig into what is going on, you have to go to the source code to gain real insight. Documentation is generally poor.
+
+### ADD RULES
+
+To use an ESLint plugin's **rules**, you add an entry to the config object's `extends` entry, which holds an array of strings. These strings are the **name of the module** (which can be a plugin or configuration) and possibly what **part** you want to use. The general form is this:
 
 >  `[plugin:[eslint-plugin-]package_name/configuration_name`
 
-The internal eslint rules provide configurations that use `:configuration_name` instead of `/` characters. For example:
+A special case are the built-in ESLint configurations. This syntax uses the form `:configuration_name` instead of `/configuration_name`. For example:
 
 > `eslint:recommended`
 
-The equivalent rule for a plugin like `@typescript/
+As an example, here's a project's `extends` entry (there are no built-in ESLint configs in use):
+``` json
+  extends: [
+    'plugin:react/recommended',                     // eslint-plugin-react config 'recommended'
+    'plugin:@typescript-eslint/eslint-recommended', // @typescript-eslint/eslint-plugin config 'eslint-recommended'
+    'airbnb-typescript',                            // eslint-config-airbnb-typescript config
+    'prettier',                                     // eslint-config-prettier default config
+    'prettier/@typescript-eslint',                  // eslint-config-prettier @typescript-eslint config
+    'prettier/react'                                // eslint-config-prettier react config
+  ],
+```
+Important note: these rules are **applied in order**, and this order can be very important. Some configs disable rules as well as adds them, and this can lead to conflicts (see next section).
 
-* `plugin` packages have prefix  `eslint-plugin-`; when specifying them in the `plugins` field you can drop the prefix. Scoped plugins follow the same convention e.g.` @typescript-eslint/eslint-plugin` is referred to as `@typescript-eslint` (it's dumb). You can also prefix with `plugin:` to make things clear, I guess
-* `rules` that are defined in a plugin need the prefix `pluginname/`. This is associated with the plugin package that has `eslint-plugin-` prefix. 
+You can work around some conflicts or otherwise **customize** rules through the ESLint config `rules` field. This is where you can **cherry-pick rules** to add or remove from what you've loaded in `extends`. Here's an example from a project's `.eslintrc.js` config file:
+``` json
+  rules: {
+    /* allow classroom debugging by researchers */
+    'no-console': 'off',
+    'no-debugger': 'warn',
+    'no-alert': 'warn',
+    /* ursys style overrides */
+    'spaced-comment': 'off',
+    'camelcase': 'off',
+    'comma-dangle': ['error', 'never'],
+    'no-underscore-dangle': 'off',
+    'lines-between-class-members': 'off',
+    'no-bitwise': 'off',
+    '@typescript-eslint/camelcase': 'off',
+    '@typescript-eslint/no-use-before-define': 1,
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/quotes': 'warn',
+    ...
+ }
+```
 
-* `extends` can accept either plugin configuration (preceded with `plugin:name/config` or an `eslint-config-name` config
 
-ESLint **environments** are preset of global values, so ESLint doesn't flag things like `window` or `fs`.  Set these in the `env` property.
+### Conflicts
 
-### prettier eslint magic naming bullshit
-
-The  `eslint-plugin-prettier` package does something dumb by providing `extends: ["plugin:prettier/recommended"]` which magically also includes `eslint-config-prettier` rules if you've installed them as well. 
-
-What's the difference?
-
-* `eslint-config-prettier` will REMOVE [conflicting rules](https://github.com/prettier/eslint-config-prettier) that interfere with Prettier. It includes several 
-* `eslint-plugin-prettier` will ADD a rule that formats content using Prettier. Since we are NOT using ESLint to format our code, we SHOULD NOT use this with Visual Studio Code and the Prettier extension.
-
-Though if we are not using ESLint to format code in Visual Studio, then maybe we don't even need to add these rules. Prettier extension will just use its `.prettierrc.js` file anyway.
+ESLint rules and plugins often conflict with each other and it is difficult to tell why unless you dig deep into EVERY configuration and rule you are loading. Sometimes new versions of ESLint introduces breaking changes that are not documented clearly, and sometimes part of the ESLint plugin chain becomes out of date or introduces its own incompatibilities through undocumented behavior. You can lose days to struggling with the tool chain, particularly if you are combining several best practices into a single project. 
 
 # Troubleshooting
 
