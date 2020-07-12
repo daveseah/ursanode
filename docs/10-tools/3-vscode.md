@@ -78,12 +78,12 @@ To summarize how this works in our lerna monorepo with multiple `.code-workspace
 
 **`.eslintrc.js`** in root directory (critical rules only)
 
-  ```
+```
 module.exports = {
-	...
-	// note that we're not loading the prettier config or plugin because
-	// in visual studio code, we're relying on the extension to do it on save
-	// via a different mechanism
+  ...
+  // note that we're not loading the prettier config or plugin because
+  // in visual studio code, we're relying on the extension to do it on save
+  // via a different mechanism
   plugins: ['@typescript-eslint', 'react', 'import'],
   settings: {
     'import/resolver': {
@@ -115,7 +115,7 @@ module.exports = {
 	}
 };
 
-  ```
+```
 
 ### .eslintrc magic naming conventions
 
@@ -128,7 +128,7 @@ ESLint's configuration is stored as JSON in a file called `.eslintrc`. Alternati
 #### ADD A PLUGIN
 
 To add an ESLint plugin to the chain, you add an entry to the config object's `plugins` entry, which is an array of npm modules. You can put the full package name here, but many tutorials use the "shortcut" versions of names. See this example of a project's `plugins` entry with their corresponding npm package defined in `package.json` under `devDependencies`:
-``` json
+```
   plugins: [
     'react',              // refers to eslint-plugin-react
     '@typescript-eslint', // refers to @typescript-eslint/eslint-plugin 
@@ -150,7 +150,7 @@ A special case are the built-in ESLint configurations. This syntax uses the form
 > `eslint:recommended`
 
 As an example, here's a project's `extends` entry (there are no built-in ESLint configs in use):
-``` json
+```
   extends: [
     'plugin:react/recommended',                     // eslint-plugin-react config 'recommended'
     'plugin:@typescript-eslint/eslint-recommended', // @typescript-eslint/eslint-plugin config 'eslint-recommended'
@@ -163,7 +163,7 @@ As an example, here's a project's `extends` entry (there are no built-in ESLint 
 Important note: these rules are **applied in order**, and this order can be very important. Some configs disable rules as well as adds them, and this can lead to conflicts (see next section).
 
 You can work around some conflicts or otherwise **customize** rules through the ESLint config `rules` field. This is where you can **cherry-pick rules** to add or remove from what you've loaded in `extends`. Here's an example from a project's `.eslintrc.js` config file:
-``` json
+```
   rules: {
     /* allow classroom debugging by researchers */
     'no-console': 'off',
