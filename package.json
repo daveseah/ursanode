@@ -13,7 +13,9 @@
     "start": "npm run build && multiview [npm run ex-next]",
     "ursys": "#ERR 'ursys is not runnable from lerna root'",
     "ex-module": "cd ur_packages/ex-module && npm run local",
-    "ex-next": "cd ur_packages/ex-next && npm run local"
+    "ex-next": "cd ur_packages/ex-next && npm run local",
+    "ex-html": "cd ur_packages/ex-html-js && npm run server",
+    "taskeroids": "cd ur_packages/ex-taskeroids && npm run server"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.34.0",

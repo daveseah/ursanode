@@ -1,0 +1,23 @@
+{
+  "name": "ex-taskeroids",
+  "version": "0.0.0",
+  "description": "Simulation of Endless Tasks",
+  "keywords": [],
+  "author": "Dave 'Sri' Seah <david@davidseah.com>",
+  "license": "MIT",
+  "main": "lib/ex-taskeroids.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daveseah/ursanode.git"
+  },
+  "scripts": {
+    "server": "node server.js"
+  },
+  "bugs": {
+    "url": "https://github.com/daveseah/ursanode/issues"
+  },
+  "homepage": "https://github.com/daveseah/ursanode#readme",
+  "dependencies": {
+    "@ursanode/ex-express": "^0.0.0"
+  }
+}
