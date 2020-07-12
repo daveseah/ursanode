@@ -1,20 +1,18 @@
 # About URSANODE
 
-URSANODE is a collection of working code modules for Javascript interactive development in HTML5 and NodeJS.
+URSANODE is a collection of working code modules, targeting Javascript interactive development using HTML5 and NodeJS. It is probably most useful for programmers with an "intermediate" level of expertise, and for programmers who are exploring software design patterns. While URSANODE is my "learning code base", I think it's solid enough to be helpful to people with prior development experience.
 
 ## Quick Start
 
-You'll need to download the repo to your working development directory. Currently I have [Macintosh Setup Instructions](docs/10-tools/1-install.md) available, though Linux and Windows 10/WSL should work similarly...I just need to confirm them.
+You'll need to download the repo to your working development directory, then make sure that you have the necessary command line build tools installed. I have [Macintosh setup instructions](docs/10-tools/1-install.md) available; Linux and Windows 10/WSL should work similarly but I have not yet confirmed they work.
 
-After you get that installed, follow the [Runtime Guide](docs/10-tools/2-run.md). It covers basic running, updating, and switching between different development branches.
+Once you have everything installed, the [Runtime Guide](docs/10-tools/2-run.md) covers basic operations so you can get something running and play with the code. 
 
 ## Project Background
 
-The Javascript universe has come a long way since 2010. In recent years, it started to approach feature parity with the Flash Actionscript's promise of ubiquitous multimedia, in many areas has exceeded it. For example, the browser runtime environment have had hardware accelerated 3D graphics for almost a decade, and streaming multimedia capabilities via WebRTC are starting to stabilize across all browsers. There is built-in MIDI and sound synthesis support, and with Node JS you can access centralized database and server crunching power. You can now target websites, desktops, and mobile all with the same source code and tools and get decent performance across the board. 
+I am a designer/developer with broad experience with interactive computer graphics going back to 8-bit microcomputers. I started transitioning to Javascript in 2014 having seen it become more capable, but I found the actual developer experience initially very daunting. URSANODE is my collection of build systems and software patterns that I've gleaned, packaged in a form that makes it easier to start new projects from scratch. A second goal is to thoroughly document and explain how these systems work for programmers who, like me, are pretty experienced with other interactive authoring environments and enjoy seeing how Javascript can be used to express familiar concepts while introducing new ones. 
 
-For all that power, the actual developer experience can be daunting to set up! URSANODE collects build system configurations and software patterns to make this easier, particularly when setting up projects from scratch. The working goal is for URSANODE to serve as both as a useful reference and as a way to collaborate with others.
-
-I've been working with interactive computer graphics since the 1980s, and the variety of that experience is reflected in my code formatting+lettercasing conventions. They differ from standard Javascript, and are [documented here](docs/00-info/module-style.md) with an example.
+On a related note, my code formatting+lettercasing conventions differ from the de-facto "standard Javascript conventions" and are [documented here](docs/00-info/module-style.md). 
 
 
 
